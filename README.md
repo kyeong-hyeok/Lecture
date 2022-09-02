@@ -2,7 +2,7 @@
 학부 강의 정리
 
 ### 📝 과목
-  - [`C`]()
+  - [`C`](https://github.com/kyeong-hyeok/Lecture/tree/main/C)
 
   - [`JAVA`]
   
