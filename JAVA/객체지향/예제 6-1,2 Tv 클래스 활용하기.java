@@ -31,6 +31,17 @@ public class TvTest {
 		//t1.channel = 7;
 		System.out.println("t1's channel : " + t1.channel);
 		System.out.println("t2's channel : " + t2.channel);
+		//ex6-4
+		Tv[] tvArr = new Tv[3];
+		for(int i=0; i<tvArr.length; i++) {
+			tvArr[i]=new Tv();
+			tvArr[i].channel = i+10;
+			System.out.println("tvArr["+i+"].channel : " +tvArr[i].channel);
+		}
+		for(int i=0; i<tvArr.length; i++) {
+			tvArr[i].channelUp();
+			System.out.println("tvArr["+i+"].channel : " +tvArr[i].channel);	
+		}
 	}
 
 }
