@@ -4,7 +4,7 @@
 ### 📝 과목
   - [`C`](https://github.com/kyeong-hyeok/Lecture/tree/main/C)
 
-  - [`JAVA`]
+  - [`JAVA`](https://github.com/kyeong-hyeok/Lecture/tree/main/JAVA)
   
   - [`영상처리`]
 
