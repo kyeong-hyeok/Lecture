@@ -1,7 +1,7 @@
 #include "Filter.h"
 #include "Output.h"
 
-void ArithmeticVer1(UInt8 *ori, Int32 wid, Int32 hei, OutputImage* out)
+void ArithmeticVer1(unsigned char *ori, int wid, int hei, OutputImage* out)
 {
     unsigned char String[7][10] = { "Ori", "Plus" , "MinZus" ,"Mul" ,"Div", "PLDivi", "GamCo" };
 
@@ -31,7 +31,7 @@ void ArithmeticVer1(UInt8 *ori, Int32 wid, Int32 hei, OutputImage* out)
 
 }
 
-unsigned char Clip3(Int32 minVal, Int32 maxVal, Int32 curVal) // Clipping
+unsigned char Clip3(int minVal, int maxVal, int curVal) // Clipping
 {
     return curVal < minVal ? minVal : curVal > maxVal ? maxVal : curVal;
 }
