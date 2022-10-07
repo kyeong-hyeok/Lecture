@@ -7,7 +7,7 @@ void ArithmeticVer1(UInt8 *ori, Int32 wid, Int32 hei, OutputImage* out)
 
     unsigned char PlusLut[PixRange], MinusLut[PixRange], MultiLut[PixRange], DiviLut[PixRange] , PLDiviLut[PixRange], GamCoLut[PixRange];
 
-    for (int Idx = 0; Idx < PixRange; Idx++)                                                 //Lookup table 만들기
+    for (int Idx = 0; Idx < PixRange; Idx++)                                  
     {
         PlusLut [Idx] = Clip3(0, 255, (int)(Idx + alpha+0.5));
         MinusLut[Idx] = Clip3(0, 255, (int)(Idx - beta+0.5));
