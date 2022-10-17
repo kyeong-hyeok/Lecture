@@ -37,7 +37,7 @@ class Student {
 	}
 	
 	float getAverage() {
-		return (int)((float)getTotal()/3*10+0.5f)/10f;
+		return (int)(getTotal()/3f*10+0.5f)/10f;
 	}
 	
 }
@@ -45,19 +45,25 @@ class Student {
 public class Excercise6_4 {
 
 	public static void main(String[] args) {
-		Student s = new Student();
-		s.name = "홍길동";
-		s.ban = 1;
-		s.no = 1;
-		s.kor = 100;
-		s.eng = 60;
-		s.math = 76;
 		
-		System.out.println("이름:"+s.name);
-		System.out.println("총점:"+s.getTotal());
-		System.out.println("이름:"+s.getAverage());
-		System.out.println(s.info());
-
+		Student s1 = new Student();
+		Student s2 = new Student("민경혁", 3, 8, 90, 90, 100);
+		s1.name = "홍길동";
+		s1.ban = 1;
+		s1.no = 1;
+		s1.kor = 100;
+		s1.eng = 60;
+		s1.math = 76;
+		
+		System.out.println("s1 이름:"+s1.name);
+		System.out.println("s1 총점:"+s1.getTotal());
+		System.out.println("s1 평균:"+s1.getAverage());
+		System.out.println(s1.info());
+		
+		System.out.println("s2 이름:"+s2.name);
+		System.out.println("s2 총점:"+s2.getTotal());
+		System.out.println("s2 평균:"+s2.getAverage());
+		System.out.println(s2.info());
 	}
 	
 }
