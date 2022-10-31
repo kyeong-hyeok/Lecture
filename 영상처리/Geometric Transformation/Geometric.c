@@ -45,28 +45,24 @@ void RotationProcess(UInt8* ori, Int32 DstWid, Int32 DstHei, Int32 DstPixNum, do
     out->rot.BS = (UInt8*)calloc(DstPixNum, sizeof(UInt8));
     out->rot.Cu = (UInt8*)calloc(DstPixNum, sizeof(UInt8));
 
-    for (int i = 0; i <= 360; i+=4) {
-        Seta = pi / 180.0 * i;                  // 입력받는 회전 각도
-        for (Int32 y = 0; y < DstHei; y++)      // 목적 영상 세로 화소
-            for (Int32 x = 0; x < DstWid; x++)  // 목적 영상 가로 화소
-            {
-                ///////////////////////////////////////////////////////////////////////////////////////
-                SrcX = cos(Seta) * (x-Cx) + sin(Seta) * (y-Cy)+Cx;                                            
-                SrcY = -sin(Seta) * (x - Cx) + cos(Seta) * (y - Cy)+Cy;                              
+    Seta = pi / 180.0 * Angle;
+    for (Int32 y = 0; y < DstHei; y++)   {  // 목적 영상 세로 화소
+        for (Int32 x = 0; x < DstWid; x++)  // 목적 영상 가로 화소
+        {
+        ///////////////////////////////////////////////////////////////////////////////////////
+            SrcX = cos(Seta) * (x-Cx) + sin(Seta) * (y-Cy)+Cx;                                            
+            SrcY = -sin(Seta) * (x - Cx) + cos(Seta) * (y - Cy)+Cy;                              
 
-                MinP = (int)(SrcX + 0.5) <= (int)(SrcY + 0.5) ? (int)(SrcX + 0.5) : (int)(SrcY + 0.5);
-                MaxP = (int)(SrcX + 0.5) <= (int)(SrcY + 0.5) ? (int)(SrcY + 0.5) : (int)(SrcX + 0.5);
-                EmptySpaceFlag = (MinP < 0 || MaxP > 512) ? true : false;
+            MinP = (int)(SrcX + 0.5) <= (int)(SrcY + 0.5) ? (int)(SrcX + 0.5) : (int)(SrcY + 0.5);
+            MaxP = (int)(SrcX + 0.5) <= (int)(SrcY + 0.5) ? (int)(SrcY + 0.5) : (int)(SrcX + 0.5);
+            EmptySpaceFlag = (MinP < 0 || MaxP > 512) ? true : false;
 
-                //out->rot.Near[y * DstStride + x] = EmptySpaceFlag ? 0 : NearesetNeighbor(ori, SrcX, SrcY, DstWid, DstHei, SrcStride); 
-                out->rot.Bi[y * DstStride + x] = EmptySpaceFlag ? 0 : Bilinear(ori, SrcX, SrcY, DstWid, DstHei, SrcStride);
-                //out->rot.BS[y * DstStride + x] = EmptySpaceFlag ? 0 : B_Spline(ori, SrcX, SrcY, DstWid, DstHei, SrcStride);
-                //out->rot.Cu[y * DstStride + x] = EmptySpaceFlag ? 0 : Cubic(ori, SrcX, SrcY, DstWid, DstHei, SrcStride);
-            }
-        fwrite(out->rot.Bi, sizeof(UInt8), DstPixNum, fp);
+            out->rot.Near[y * DstStride + x] = EmptySpaceFlag ? 0 : NearesetNeighbor(ori, SrcX, SrcY, DstWid, DstHei, SrcStride); 
+            out->rot.Bi[y * DstStride + x] = EmptySpaceFlag ? 0 : Bilinear(ori, SrcX, SrcY, DstWid, DstHei, SrcStride);
+            out->rot.BS[y * DstStride + x] = EmptySpaceFlag ? 0 : B_Spline(ori, SrcX, SrcY, DstWid, DstHei, SrcStride);
+            out->rot.Cu[y * DstStride + x] = EmptySpaceFlag ? 0 : Cubic(ori, SrcX, SrcY, DstWid, DstHei, SrcStride);
+        }
     }
-    fclose(fp);
-}
 
 void GeometricTransformation(InputImage* in, OutputImage* out)
 {
