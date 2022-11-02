@@ -24,8 +24,7 @@ class CaptionTv extends Tv {
 			System.out.println(text);
 	}
 	public String toString() {
-		return "power = "+power+", channel = "+channel
-				+", caption = "+caption;
+		return super.toString()+", caption = "+ caption;
 	}
 }
 
