@@ -7,7 +7,7 @@ C
 | 목차 | 내용 |
 |:---:|:---:|
 | 1 |  [Point Transformation]() |
-| 2 | []()|
+| 2 | [Geometric Transformation]()|
 | 3 | [] |
 | 4 | [] |
 | 5 | [] |
