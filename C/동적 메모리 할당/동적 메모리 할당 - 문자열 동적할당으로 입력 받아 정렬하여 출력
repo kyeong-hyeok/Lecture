@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#pragma warning(disable:4996)
+
+int main() {
+	int n, min = 101, l;
+	char** p = NULL, *q, tmp[100], *temp=NULL;
+	scanf("%d", &n);
+	getchar();
+	p = (char**)malloc((n + 1) * sizeof(char*));
+	if (p == NULL) { printf("Not Enough Memory"); return -1;}
+	for (int i = 0; i < n; i++) {
+		gets(tmp);
+		l = strlen(tmp);
+		p[i] = (char*)malloc((l + 1) * sizeof(char));
+		if (p[i] == NULL) { printf("Not Enough Memory"); return -1;}
+		strcpy(p[i], tmp);
+	}
+	for (int i = 0; i < n - 1; i++) {
+		for (int j = 0; j < n - 1; j++) {
+			if (strlen(p[j]) < strlen(p[j+1])) {
+				temp = &p[j][0];
+				p[j] = &p[j + 1][0];
+				p[j + 1] = temp;
+			}
+		}
+	}
+	for (int i=0; i<n; i++)
+		printf("%s\n", p[i]);
+	for (int i = 0; i < n; i++)
+		free(p[i]);
+	free(p);
+	return 0;
+}
