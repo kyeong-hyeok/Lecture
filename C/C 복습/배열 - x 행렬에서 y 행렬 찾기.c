@@ -23,3 +23,4 @@ int main() {
 	else printf("none");
 	return 0;
 }
+ 
